@@ -151,6 +151,16 @@ wget http://plates.openalpr.com/h786poj.jpg
 docker run -it --rm -v $(pwd):/data:ro openalpr -c eu h786poj.jpg
 ```
 
+OpenFaaS
+--------
+
+```
+docker build -t <your_docker_hub_id>/alpr Dockerfile.openfaas
+docker push <your_docker_hub_id>/alpr
+faas-cli deploy --image ems5311/alpr --fprocess "bash /srv/openalpr/run.bash" --name alpr -g <your-openfaas-url>
+```
+
+
 Questions
 ---------
 Please post questions or comments to the Google group list: https://groups.google.com/forum/#!forum/openalpr
